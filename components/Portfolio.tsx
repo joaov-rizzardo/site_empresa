@@ -1,11 +1,26 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Calendar, Users } from "lucide-react";
+import Link from "next/link";
+import { X, ExternalLink, Calendar, Users, ArrowRight } from "lucide-react";
 
 const projects = [
   {
     id: 1,
+    title: "FinApp",
+    category: "Mobile iOS & Android",
+    description:
+      "Aplicativo de controle financeiro pessoal com dashboard analítico, categorização de gastos, metas de poupança e suporte offline.",
+    stack: ["React Native", "TypeScript", "SQLite", "Expo"],
+    color: "#00D4AA",
+    bg: "from-secondary/20 to-surface2",
+    caseUrl: "/portfolio/finapp",
+    stats: { duration: "2026", users: "iOS & Android", result: "100% offline" },
+    details:
+      "App mobile completo com dashboard analítico, categorização automática de gastos, metas financeiras com progresso visual, controle de cartão de crédito e dark mode nativo. Desenvolvido com React Native + Expo para funcionar offline por padrão.",
+  },
+  {
+    id: 2,
     title: "SaaS de Agendamento",
     category: "Plataforma Web",
     description:
@@ -13,12 +28,13 @@ const projects = [
     stack: ["React", "Node.js", "PostgreSQL"],
     color: "#6C63FF",
     bg: "from-primary/20 to-surface2",
+    caseUrl: null,
     stats: { duration: "3 meses", users: "2.400+ usuários", result: "+60% eficiência" },
     details:
       "Sistema completo de agendamento com múltiplas clínicas, controle de agenda por especialidade, notificações automáticas por WhatsApp e e-mail, prontuário digital simplificado e dashboard com métricas de ocupação.",
   },
   {
-    id: 2,
+    id: 3,
     title: "App de Delivery",
     category: "Mobile iOS & Android",
     description:
@@ -26,12 +42,13 @@ const projects = [
     stack: ["React Native", "Firebase"],
     color: "#00D4AA",
     bg: "from-secondary/20 to-surface2",
+    caseUrl: null,
     stats: { duration: "4 meses", users: "8.000+ downloads", result: "+40% em vendas" },
     details:
       "App nativo para iOS e Android com tracking GPS em tempo real, integração com múltiplos meios de pagamento, chat entre entregador e cliente, sistema de fidelidade e painel web para restaurantes gerenciarem pedidos.",
   },
   {
-    id: 3,
+    id: 4,
     title: "ERP Financeiro",
     category: "Sistema Web",
     description:
@@ -39,6 +56,7 @@ const projects = [
     stack: ["Next.js", "Prisma", "PostgreSQL"],
     color: "#6C63FF",
     bg: "from-primary/15 via-surface2 to-secondary/10",
+    caseUrl: null,
     stats: { duration: "5 meses", users: "150+ empresas", result: "100% no prazo" },
     details:
       "ERP financeiro completo com plano de contas, centros de custo, emissão de boletos via API bancária, relatórios DRE/fluxo de caixa, multi-empresa e controle de acessos por perfil.",
@@ -152,7 +170,7 @@ export default function Portfolio() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((p, i) => (
             <motion.div
               key={p.id}
@@ -163,7 +181,7 @@ export default function Portfolio() {
               className="group rounded-2xl border border-white/[.07] bg-surface overflow-hidden
                 cursor-pointer transition-all duration-300 hover:border-primary/40 hover:-translate-y-1
                 hover:shadow-[0_0_30px_rgba(108,99,255,.15),0_16px_50px_rgba(0,0,0,.4)]"
-              onClick={() => setSelected(p)}
+              onClick={() => !p.caseUrl && setSelected(p)}
             >
               {/* Card top visual */}
               <div className={`h-44 bg-gradient-to-br ${p.bg} relative overflow-hidden`}>
@@ -218,12 +236,23 @@ export default function Portfolio() {
                       </span>
                     ))}
                   </div>
-                  <button
-                    className="text-xs font-medium flex items-center gap-1 transition-colors"
-                    style={{ color: p.color }}
-                  >
-                    Detalhes <ExternalLink size={11} />
-                  </button>
+                  {p.caseUrl ? (
+                    <Link
+                      href={p.caseUrl}
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-xs font-medium flex items-center gap-1 transition-colors"
+                      style={{ color: p.color }}
+                    >
+                      Ver case <ArrowRight size={11} />
+                    </Link>
+                  ) : (
+                    <button
+                      className="text-xs font-medium flex items-center gap-1 transition-colors"
+                      style={{ color: p.color }}
+                    >
+                      Detalhes <ExternalLink size={11} />
+                    </button>
+                  )}
                 </div>
               </div>
             </motion.div>
