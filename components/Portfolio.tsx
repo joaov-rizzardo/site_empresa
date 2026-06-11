@@ -1,8 +1,12 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { X, ExternalLink, Calendar, Users, ArrowRight } from "lucide-react";
+import {
+  X, ExternalLink, Calendar, Users, ArrowRight,
+  Layers, Globe2, Shield, RefreshCw,
+} from "lucide-react";
 
 const projects = [
   {
@@ -10,14 +14,14 @@ const projects = [
     title: "FinApp",
     category: "Mobile iOS & Android",
     description:
-      "Aplicativo de controle financeiro pessoal com dashboard analítico, categorização de gastos, metas de poupança e suporte offline.",
-    stack: ["React Native", "TypeScript", "SQLite", "Expo"],
+      "Aplicativo de controle financeiro pessoal com dashboard analítico, categorização de gastos, metas de poupança e controle de cartão de crédito.",
+    stack: ["React Native", "Expo SDK 54", "Firebase", "NativeWind", "TypeScript"],
     color: "#00D4AA",
     bg: "from-secondary/20 to-surface2",
     caseUrl: "/portfolio/finapp",
-    stats: { duration: "2026", users: "iOS & Android", result: "100% offline" },
+    stats: { duration: "2026", users: "iOS & Android", result: "100% TypeScript" },
     details:
-      "App mobile completo com dashboard analítico, categorização automática de gastos, metas financeiras com progresso visual, controle de cartão de crédito e dark mode nativo. Desenvolvido com React Native + Expo para funcionar offline por padrão.",
+      "App mobile completo com dashboard analítico, categorização automática de gastos, metas financeiras com progresso visual, controle de cartão de crédito e dark mode nativo. Desenvolvido com React Native + Expo SDK 54, Firebase Firestore e NativeWind.",
   },
   {
     id: 2,
@@ -63,6 +67,13 @@ const projects = [
   },
 ];
 
+const finappMetrics = [
+  { value: "7", label: "Módulos", icon: Layers },
+  { value: "2", label: "Plataformas", icon: Globe2 },
+  { value: "100%", label: "TypeScript", icon: Shield },
+  { value: "Realtime", label: "Firebase", icon: RefreshCw },
+];
+
 type Project = (typeof projects)[0];
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
@@ -84,7 +95,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           onClick={(e) => e.stopPropagation()}
           className="relative w-full max-w-xl rounded-2xl border border-white/10 bg-surface shadow-2xl overflow-hidden"
         >
-          {/* Header gradient */}
           <div className={`h-36 bg-gradient-to-br ${project.bg} relative flex items-end p-6`}>
             <div className="absolute inset-0 dot-grid opacity-30" />
             <span
@@ -94,19 +104,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               {project.category}
             </span>
           </div>
-
           <button
             onClick={onClose}
             className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
           >
             <X size={14} />
           </button>
-
           <div className="p-6">
             <h3 className="font-display font-bold text-2xl mb-3">{project.title}</h3>
             <p className="text-dim text-sm leading-relaxed mb-5">{project.details}</p>
-
-            {/* Stats */}
             <div className="grid grid-cols-3 gap-3 mb-5">
               {[
                 { icon: Calendar, label: "Prazo", value: project.stats.duration },
@@ -116,17 +122,12 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 <div key={label} className="rounded-xl bg-surface2 p-3 text-center">
                   <Icon size={13} className="mx-auto mb-1 text-dim" />
                   <div className="text-xs text-dim mb-1">{label}</div>
-                  <div
-                    className="text-xs font-mono font-medium"
-                    style={{ color: project.color }}
-                  >
+                  <div className="text-xs font-mono font-medium" style={{ color: project.color }}>
                     {value}
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Stack tags */}
             <div className="flex flex-wrap gap-2">
               {project.stack.map((t) => (
                 <span
@@ -147,10 +148,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
 export default function Portfolio() {
   const [selected, setSelected] = useState<Project | null>(null);
+  const [finapp, ...others] = projects;
 
   return (
     <section id="portfolio" className="py-28 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -170,31 +174,149 @@ export default function Portfolio() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((p, i) => (
+        {/* ── Featured FinApp card ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative rounded-2xl border border-white/[.07] bg-surface overflow-hidden mb-6 group
+            hover:border-secondary/25 transition-all duration-500
+            hover:shadow-[0_0_70px_rgba(0,212,170,0.07),0_28px_80px_rgba(0,0,0,0.55)]"
+        >
+          {/* Background layers */}
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/[0.06] via-transparent to-primary/[0.04] pointer-events-none" />
+          <div className="absolute inset-0 dot-grid opacity-[0.12] pointer-events-none" />
+          <div className="absolute -top-40 -right-40 w-[480px] h-[480px] bg-secondary/[0.06] rounded-full blur-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+          <div className="relative grid lg:grid-cols-[1fr_260px] items-stretch">
+
+            {/* Left — content */}
+            <div className="p-8 lg:p-10">
+
+              {/* Badge row */}
+              <div className="flex flex-wrap items-center gap-2.5 mb-6">
+                <span
+                  className="px-3 py-1 rounded-full text-xs font-mono font-medium"
+                  style={{ background: "rgba(0,212,170,0.12)", color: "#00D4AA" }}
+                >
+                  {finapp.category}
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono bg-primary/10 border border-primary/20 text-primary">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  Case completo disponível
+                </span>
+              </div>
+
+              <h3 className="font-display font-extrabold text-5xl lg:text-6xl tracking-tight mb-3">
+                Fin<span className="gradient-text">App</span>
+              </h3>
+
+              <p className="text-dim leading-relaxed mb-6 max-w-lg">
+                {finapp.description}
+              </p>
+
+              {/* Metrics */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-7">
+                {finappMetrics.map(({ value, label, icon: Icon }) => (
+                  <div
+                    key={label}
+                    className="rounded-xl bg-surface2/60 border border-white/[.05] p-3.5"
+                  >
+                    <Icon size={13} className="text-secondary mb-2" />
+                    <div className="font-display font-bold text-xl gradient-text leading-none mb-1">
+                      {value}
+                    </div>
+                    <div className="text-dim text-xs font-mono">{label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Stack */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {finapp.stack.map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1.5 rounded-lg text-xs font-mono"
+                    style={{ background: "rgba(0,212,170,0.08)", color: "#00D4AA" }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Prominent CTA */}
+              <Link
+                href={finapp.caseUrl!}
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-primary text-white text-sm font-semibold
+                  hover:bg-primary/90 transition-all duration-200
+                  hover:shadow-[0_0_28px_rgba(108,99,255,0.5)] group/btn"
+              >
+                Ver case completo
+                <ArrowRight
+                  size={15}
+                  className="group-hover/btn:translate-x-1 transition-transform duration-200"
+                />
+              </Link>
+            </div>
+
+            {/* Right — phone visual */}
+            <div className="hidden lg:flex items-center justify-center px-6 py-8 relative">
+              {/* Ambient glow */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-44 h-60 bg-secondary/10 rounded-full blur-3xl" />
+              </div>
+
+              {/* Phone frame */}
+              <div
+                className="relative z-10 w-[138px] h-[284px] rounded-[28px] overflow-hidden flex-shrink-0"
+                style={{
+                  boxShadow:
+                    "0 24px 64px rgba(0,0,0,0.7), 0 0 0 1.5px rgba(255,255,255,0.09), 0 0 0 3px rgba(0,0,0,0.5)",
+                }}
+              >
+                {/* Notch bar */}
+                <div className="absolute top-0 left-0 right-0 h-6 bg-[#0A0A0F]/95 z-10 flex items-center justify-center">
+                  <div className="w-12 h-[5px] bg-[#16161F] rounded-full" />
+                </div>
+                <Image
+                  src="/images/finapp/relatorios.jpeg"
+                  alt="FinApp — tela de relatórios"
+                  fill
+                  className="object-cover object-top"
+                  sizes="138px"
+                />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── Other projects ── */}
+        <div className="grid md:grid-cols-3 gap-5">
+          {others.map((p, i) => (
             <motion.div
               key={p.id}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="group rounded-2xl border border-white/[.07] bg-surface overflow-hidden
                 cursor-pointer transition-all duration-300 hover:border-primary/40 hover:-translate-y-1
                 hover:shadow-[0_0_30px_rgba(108,99,255,.15),0_16px_50px_rgba(0,0,0,.4)]"
-              onClick={() => !p.caseUrl && setSelected(p)}
+              onClick={() => setSelected(p)}
             >
-              {/* Card top visual */}
-              <div className={`h-44 bg-gradient-to-br ${p.bg} relative overflow-hidden`}>
+              {/* Card visual */}
+              <div className={`h-40 bg-gradient-to-br ${p.bg} relative overflow-hidden`}>
                 <div className="absolute inset-0 dot-grid opacity-30" />
 
                 {/* Mock screen */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-28 rounded-t-xl bg-surface2/80 border border-white/10 overflow-hidden shadow-2xl">
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 rounded-t-xl bg-surface2/80 border border-white/10 overflow-hidden shadow-2xl">
                   <div className="h-4 bg-base/60 flex items-center gap-1.5 px-2">
                     <span className="w-2 h-2 rounded-full" style={{ background: p.color }} />
                     <span className="h-1.5 rounded-full bg-white/10 flex-1" />
                   </div>
                   <div className="p-2 space-y-1.5">
-                    {[80, 60, 90, 55].map((w, j) => (
+                    {[80, 60, 90].map((w, j) => (
                       <div
                         key={j}
                         className="h-1.5 rounded-full"
@@ -207,7 +329,6 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Category badge */}
                 <div className="absolute top-4 left-4">
                   <span
                     className="px-3 py-1 rounded-full text-xs font-mono font-medium backdrop-blur-sm"
@@ -216,15 +337,13 @@ export default function Portfolio() {
                     {p.category}
                   </span>
                 </div>
-
-                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
 
-              <div className="p-6">
-                <h3 className="font-display font-bold text-xl text-ink mb-2">{p.title}</h3>
-                <p className="text-dim text-sm leading-relaxed mb-5">{p.description}</p>
-                <div className="flex items-center justify-between">
+              <div className="p-5">
+                <h3 className="font-display font-bold text-lg text-ink mb-2">{p.title}</h3>
+                <p className="text-dim text-sm leading-relaxed mb-4">{p.description}</p>
+                <div className="flex items-center justify-between gap-2">
                   <div className="flex flex-wrap gap-1.5">
                     {p.stack.map((t) => (
                       <span
@@ -236,23 +355,12 @@ export default function Portfolio() {
                       </span>
                     ))}
                   </div>
-                  {p.caseUrl ? (
-                    <Link
-                      href={p.caseUrl}
-                      onClick={(e) => e.stopPropagation()}
-                      className="text-xs font-medium flex items-center gap-1 transition-colors"
-                      style={{ color: p.color }}
-                    >
-                      Ver case <ArrowRight size={11} />
-                    </Link>
-                  ) : (
-                    <button
-                      className="text-xs font-medium flex items-center gap-1 transition-colors"
-                      style={{ color: p.color }}
-                    >
-                      Detalhes <ExternalLink size={11} />
-                    </button>
-                  )}
+                  <button
+                    className="text-xs font-medium flex items-center gap-1 flex-shrink-0 transition-colors"
+                    style={{ color: p.color }}
+                  >
+                    Detalhes <ExternalLink size={11} />
+                  </button>
                 </div>
               </div>
             </motion.div>
