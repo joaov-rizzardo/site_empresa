@@ -46,13 +46,13 @@ export default function Testimonials() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Depoimentos
           </span>
-          <h2 className="font-display text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
             O que nossos{" "}
             <span className="gradient-text">clientes dizem</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}

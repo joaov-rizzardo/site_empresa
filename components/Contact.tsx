@@ -35,7 +35,7 @@ export default function Contact() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-64 bg-primary/6 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left — CTA */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -46,7 +46,7 @@ export default function Contact() {
             <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-5">
               // Contato
             </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-extrabold tracking-tight mb-5">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5 break-words">
               Pronto para transformar{" "}
               <span className="gradient-text">sua ideia</span>?
             </h2>
@@ -126,7 +126,7 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs text-dim mb-2 font-mono">
                         Nome *

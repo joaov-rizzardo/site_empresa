@@ -49,7 +49,7 @@ export default function Process() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Como trabalhamos
           </span>
-          <h2 className="font-display text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
             Um processo{" "}
             <span className="gradient-text">transparente</span>
           </h2>
@@ -60,7 +60,7 @@ export default function Process() {
           {/* Connector line — desktop */}
           <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
 
-          <div className="grid lg:grid-cols-4 gap-8 lg:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6">
             {steps.map((step, i) => {
               const Icon = step.icon;
               return (

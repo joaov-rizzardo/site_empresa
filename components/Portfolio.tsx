@@ -180,7 +180,7 @@ export default function Portfolio() {
         </motion.div>
 
         {/* ── Projects ── */}
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {projects.map((p, i) => {
             const visual = (
               <div className={`h-40 bg-gradient-to-br ${p.bg} relative overflow-hidden`}>

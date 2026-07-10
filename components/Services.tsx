@@ -64,7 +64,7 @@ export default function Services() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // O que entregamos
           </span>
-          <h2 className="font-display text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
             Soluções feitas para{" "}
             <span className="gradient-text">escalar</span>
           </h2>
@@ -76,7 +76,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
           {services.map((s) => {
             const Icon = s.icon;

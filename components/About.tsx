@@ -70,12 +70,12 @@ export default function About() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Sobre nós
           </span>
-          <h2 className="font-display text-4xl font-extrabold tracking-tight">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight break-words">
             Quem está por <span className="gradient-text">trás disso</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left — text */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -86,7 +86,7 @@ export default function About() {
             <span className="hidden lg:inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-5">
               // Sobre nós
             </span>
-            <h2 className="hidden lg:block font-display text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
+            <h2 className="hidden lg:block font-display text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 break-words">
               Quem está por <span className="gradient-text">trás disso</span>
             </h2>
 

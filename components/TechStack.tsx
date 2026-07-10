@@ -38,7 +38,7 @@ export default function TechStack() {
         <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
           // Nossa stack
         </span>
-        <h2 className="font-display text-4xl lg:text-5xl font-extrabold tracking-tight">
+        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
           Tecnologias que{" "}
           <span className="gradient-text">dominamos</span>
         </h2>
