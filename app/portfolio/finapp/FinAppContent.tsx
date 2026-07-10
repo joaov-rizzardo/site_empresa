@@ -355,14 +355,14 @@ export default function FinAppContent() {
                 transition={{ duration: 0.4 }}
               >
                 <Link
-                  href="/#portfolio"
+                  href="/"
                   className="inline-flex items-center gap-2 text-dim text-sm hover:text-ink transition-colors mb-8 group"
                 >
                   <ArrowLeft
                     size={15}
                     className="group-hover:-translate-x-1 transition-transform"
                   />
-                  Portfólio
+                  Início
                 </Link>
               </motion.div>
 

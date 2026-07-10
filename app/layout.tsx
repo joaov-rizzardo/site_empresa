@@ -23,6 +23,9 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  ),
   title: "Vex Software — Desenvolvimento Web & Mobile Sob Medida",
   description:
     "Transformamos suas ideias em sistemas que funcionam. Desenvolvimento web e mobile para empresas que querem crescer com tecnologia.",

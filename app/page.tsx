@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
-import Portfolio from "@/components/Portfolio";
 import TechStack from "@/components/TechStack";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
@@ -19,7 +18,6 @@ export default function Home() {
         <Hero />
         <Services />
         <Process />
-        <Portfolio />
         <TechStack />
         <About />
         <Testimonials />

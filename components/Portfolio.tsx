@@ -5,10 +5,23 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   X, ExternalLink, Calendar, Users, ArrowRight,
-  Layers, Globe2, Shield, RefreshCw,
 } from "lucide-react";
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  stack: string[];
+  color: string;
+  bg: string;
+  caseUrl: string | null;
+  image?: string;
+  stats: { duration: string; users: string; result: string };
+  details: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: "FinApp",
@@ -19,23 +32,25 @@ const projects = [
     color: "#00D4AA",
     bg: "from-secondary/20 to-surface2",
     caseUrl: "/portfolio/finapp",
+    image: "/images/finapp/relatorios.jpeg",
     stats: { duration: "2026", users: "iOS & Android", result: "100% TypeScript" },
     details:
       "App mobile completo com dashboard analítico, categorização automática de gastos, metas financeiras com progresso visual, controle de cartão de crédito e dark mode nativo. Desenvolvido com React Native + Expo SDK 54, Firebase Firestore e NativeWind.",
   },
   {
     id: 2,
-    title: "SaaS de Agendamento",
-    category: "Plataforma Web",
+    title: "Espaço Âncora",
+    category: "Landing Page",
     description:
-      "Plataforma de agendamento online para clínicas com painel administrativo, notificações por e-mail, gestão de pacientes e relatórios analíticos.",
-    stack: ["React", "Node.js", "PostgreSQL"],
-    color: "#6C63FF",
-    bg: "from-primary/20 to-surface2",
-    caseUrl: null,
-    stats: { duration: "3 meses", users: "2.400+ usuários", result: "+60% eficiência" },
+      "Landing page de página única para consultório de psicologia clínica, focada em converter visitantes em pacientes via WhatsApp e formulário validado.",
+    stack: ["Next.js 14", "TypeScript", "Tailwind"],
+    color: "#8FA98D",
+    bg: "from-[rgba(143,169,141,0.22)] to-surface2",
+    caseUrl: "/portfolio/ancora",
+    image: "/images/ancora/hero-desktop.png",
+    stats: { duration: "2026", users: "Psicologia clínica", result: "Mobile-first" },
     details:
-      "Sistema completo de agendamento com múltiplas clínicas, controle de agenda por especialidade, notificações automáticas por WhatsApp e e-mail, prontuário digital simplificado e dashboard com métricas de ocupação.",
+      "Landing page de página única construída com Next.js 14, TypeScript e Tailwind CSS, com formulário validado (React Hook Form + Zod), animações acessíveis via Framer Motion e conversão por WhatsApp em um clique.",
   },
   {
     id: 3,
@@ -66,15 +81,6 @@ const projects = [
       "ERP financeiro completo com plano de contas, centros de custo, emissão de boletos via API bancária, relatórios DRE/fluxo de caixa, multi-empresa e controle de acessos por perfil.",
   },
 ];
-
-const finappMetrics = [
-  { value: "7", label: "Módulos", icon: Layers },
-  { value: "2", label: "Plataformas", icon: Globe2 },
-  { value: "100%", label: "TypeScript", icon: Shield },
-  { value: "Realtime", label: "Firebase", icon: RefreshCw },
-];
-
-type Project = (typeof projects)[0];
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   return (
@@ -148,7 +154,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
 export default function Portfolio() {
   const [selected, setSelected] = useState<Project | null>(null);
-  const [finapp, ...others] = projects;
 
   return (
     <section id="portfolio" className="py-28 relative">
@@ -174,160 +179,43 @@ export default function Portfolio() {
           </p>
         </motion.div>
 
-        {/* ── Featured FinApp card ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative rounded-2xl border border-white/[.07] bg-surface overflow-hidden mb-6 group
-            hover:border-secondary/25 transition-all duration-500
-            hover:shadow-[0_0_70px_rgba(0,212,170,0.07),0_28px_80px_rgba(0,0,0,0.55)]"
-        >
-          {/* Background layers */}
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/[0.06] via-transparent to-primary/[0.04] pointer-events-none" />
-          <div className="absolute inset-0 dot-grid opacity-[0.12] pointer-events-none" />
-          <div className="absolute -top-40 -right-40 w-[480px] h-[480px] bg-secondary/[0.06] rounded-full blur-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-          <div className="relative grid lg:grid-cols-[1fr_260px] items-stretch">
-
-            {/* Left — content */}
-            <div className="p-8 lg:p-10">
-
-              {/* Badge row */}
-              <div className="flex flex-wrap items-center gap-2.5 mb-6">
-                <span
-                  className="px-3 py-1 rounded-full text-xs font-mono font-medium"
-                  style={{ background: "rgba(0,212,170,0.12)", color: "#00D4AA" }}
-                >
-                  {finapp.category}
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono bg-primary/10 border border-primary/20 text-primary">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  Case completo disponível
-                </span>
-              </div>
-
-              <h3 className="font-display font-extrabold text-5xl lg:text-6xl tracking-tight mb-3">
-                Fin<span className="gradient-text">App</span>
-              </h3>
-
-              <p className="text-dim leading-relaxed mb-6 max-w-lg">
-                {finapp.description}
-              </p>
-
-              {/* Metrics */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-7">
-                {finappMetrics.map(({ value, label, icon: Icon }) => (
-                  <div
-                    key={label}
-                    className="rounded-xl bg-surface2/60 border border-white/[.05] p-3.5"
-                  >
-                    <Icon size={13} className="text-secondary mb-2" />
-                    <div className="font-display font-bold text-xl gradient-text leading-none mb-1">
-                      {value}
-                    </div>
-                    <div className="text-dim text-xs font-mono">{label}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Stack */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {finapp.stack.map((t) => (
-                  <span
-                    key={t}
-                    className="px-3 py-1.5 rounded-lg text-xs font-mono"
-                    style={{ background: "rgba(0,212,170,0.08)", color: "#00D4AA" }}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              {/* Prominent CTA */}
-              <Link
-                href={finapp.caseUrl!}
-                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-primary text-white text-sm font-semibold
-                  hover:bg-primary/90 transition-all duration-200
-                  hover:shadow-[0_0_28px_rgba(108,99,255,0.5)] group/btn"
-              >
-                Ver case completo
-                <ArrowRight
-                  size={15}
-                  className="group-hover/btn:translate-x-1 transition-transform duration-200"
-                />
-              </Link>
-            </div>
-
-            {/* Right — phone visual */}
-            <div className="hidden lg:flex items-center justify-center px-6 py-8 relative">
-              {/* Ambient glow */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-44 h-60 bg-secondary/10 rounded-full blur-3xl" />
-              </div>
-
-              {/* Phone frame */}
-              <div
-                className="relative z-10 w-[138px] h-[284px] rounded-[28px] overflow-hidden flex-shrink-0"
-                style={{
-                  boxShadow:
-                    "0 24px 64px rgba(0,0,0,0.7), 0 0 0 1.5px rgba(255,255,255,0.09), 0 0 0 3px rgba(0,0,0,0.5)",
-                }}
-              >
-                {/* Notch bar */}
-                <div className="absolute top-0 left-0 right-0 h-6 bg-[#0A0A0F]/95 z-10 flex items-center justify-center">
-                  <div className="w-12 h-[5px] bg-[#16161F] rounded-full" />
-                </div>
-                <Image
-                  src="/images/finapp/relatorios.jpeg"
-                  alt="FinApp — tela de relatórios"
-                  fill
-                  className="object-cover object-top"
-                  sizes="138px"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ── Other projects ── */}
+        {/* ── Projects ── */}
         <div className="grid md:grid-cols-3 gap-5">
-          {others.map((p, i) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group rounded-2xl border border-white/[.07] bg-surface overflow-hidden
-                cursor-pointer transition-all duration-300 hover:border-primary/40 hover:-translate-y-1
-                hover:shadow-[0_0_30px_rgba(108,99,255,.15),0_16px_50px_rgba(0,0,0,.4)]"
-              onClick={() => setSelected(p)}
-            >
-              {/* Card visual */}
+          {projects.map((p, i) => {
+            const visual = (
               <div className={`h-40 bg-gradient-to-br ${p.bg} relative overflow-hidden`}>
                 <div className="absolute inset-0 dot-grid opacity-30" />
 
-                {/* Mock screen */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 rounded-t-xl bg-surface2/80 border border-white/10 overflow-hidden shadow-2xl">
-                  <div className="h-4 bg-base/60 flex items-center gap-1.5 px-2">
-                    <span className="w-2 h-2 rounded-full" style={{ background: p.color }} />
-                    <span className="h-1.5 rounded-full bg-white/10 flex-1" />
+                {p.image ? (
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-28 rounded-t-lg border border-white/10 overflow-hidden shadow-2xl bg-base">
+                    <Image
+                      src={p.image}
+                      alt={`Prévia do projeto ${p.title}`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="360px"
+                    />
                   </div>
-                  <div className="p-2 space-y-1.5">
-                    {[80, 60, 90].map((w, j) => (
-                      <div
-                        key={j}
-                        className="h-1.5 rounded-full"
-                        style={{
-                          width: `${w}%`,
-                          background: j % 2 === 0 ? `${p.color}40` : "rgba(255,255,255,.07)",
-                        }}
-                      />
-                    ))}
+                ) : (
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-24 rounded-t-xl bg-surface2/80 border border-white/10 overflow-hidden shadow-2xl">
+                    <div className="h-4 bg-base/60 flex items-center gap-1.5 px-2">
+                      <span className="w-2 h-2 rounded-full" style={{ background: p.color }} />
+                      <span className="h-1.5 rounded-full bg-white/10 flex-1" />
+                    </div>
+                    <div className="p-2 space-y-1.5">
+                      {[80, 60, 90].map((w, j) => (
+                        <div
+                          key={j}
+                          className="h-1.5 rounded-full"
+                          style={{
+                            width: `${w}%`,
+                            background: j % 2 === 0 ? `${p.color}40` : "rgba(255,255,255,.07)",
+                          }}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="absolute top-4 left-4">
                   <span
@@ -337,9 +225,22 @@ export default function Portfolio() {
                     {p.category}
                   </span>
                 </div>
+                {p.caseUrl && (
+                  <div className="absolute top-4 right-4">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-black/30 border border-white/10 text-white/80 backdrop-blur-sm">
+                      <span
+                        className="w-1.5 h-1.5 rounded-full animate-pulse"
+                        style={{ background: p.color }}
+                      />
+                      Case
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
+            );
 
+            const body = (
               <div className="p-5">
                 <h3 className="font-display font-bold text-lg text-ink mb-2">{p.title}</h3>
                 <p className="text-dim text-sm leading-relaxed mb-4">{p.description}</p>
@@ -355,16 +256,48 @@ export default function Portfolio() {
                       </span>
                     ))}
                   </div>
-                  <button
+                  <span
                     className="text-xs font-medium flex items-center gap-1 flex-shrink-0 transition-colors"
                     style={{ color: p.color }}
                   >
-                    Detalhes <ExternalLink size={11} />
-                  </button>
+                    {p.caseUrl ? "Ver case" : "Detalhes"}
+                    {p.caseUrl ? <ArrowRight size={11} /> : <ExternalLink size={11} />}
+                  </span>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            );
+
+            const cardClass =
+              "group block rounded-2xl border border-white/[.07] bg-surface overflow-hidden cursor-pointer transition-all duration-300 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(108,99,255,.15),0_16px_50px_rgba(0,0,0,.4)]";
+
+            return (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+              >
+                {p.caseUrl ? (
+                  <Link href={p.caseUrl} className={cardClass}>
+                    {visual}
+                    {body}
+                  </Link>
+                ) : (
+                  <div
+                    className={cardClass}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelected(p)}
+                    onKeyDown={(e) => e.key === "Enter" && setSelected(p)}
+                  >
+                    {visual}
+                    {body}
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 

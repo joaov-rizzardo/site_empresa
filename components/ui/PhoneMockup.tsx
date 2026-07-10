@@ -8,11 +8,12 @@ interface PhoneMockupProps {
 }
 
 const sizeMap = { sm: 220, md: 300, lg: 380, xl: 460 } as const;
+/* Smaller frames need a proportionally smaller radius, or corners read as
+   overly round "pill" shapes instead of a phone */
+const radiusMap = { sm: 26, md: 32, lg: 38, xl: 44 } as const;
 const ASPECT = 390 / 844;
 
-const FRAME_RADIUS = 44;
 const BORDER_W = 6;
-const SCREEN_RADIUS = FRAME_RADIUS - BORDER_W;
 
 /* Gradient for the metallic frame border — lighter at top-left (light source),
    deepest in the middle, slightly lighter at bottom-right (reflected light) */
@@ -22,6 +23,8 @@ const FRAME_GRADIENT =
 export default function PhoneMockup({ src, alt, className = "", size = "md" }: PhoneMockupProps) {
   const h = sizeMap[size];
   const w = Math.round(h * ASPECT);
+  const FRAME_RADIUS = radiusMap[size];
+  const SCREEN_RADIUS = FRAME_RADIUS - BORDER_W;
 
   const volumeButtons = [
     { top: "21%", height: Math.round(h * 0.062) },

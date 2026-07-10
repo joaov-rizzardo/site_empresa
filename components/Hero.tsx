@@ -261,7 +261,7 @@ export default function Hero() {
               className="flex flex-wrap gap-4"
             >
               <button
-                onClick={() => document.querySelector("#portfolio")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.querySelector("#servicos")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-white font-semibold
                   hover:bg-primary/90 transition-all duration-200 hover:shadow-[0_0_30px_rgba(108,99,255,0.45)] group"
               >
