@@ -24,10 +24,21 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (href: string) => {
+    const wasOpen = open;
     setOpen(false);
     if (pathname === "/") {
-      const el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      const scrollToTarget = () => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      };
+      // The mobile menu's collapse animation mutates layout every frame,
+      // which cancels an in-flight smooth scrollIntoView. Wait for it to
+      // finish closing before scrolling.
+      if (wasOpen) {
+        setTimeout(scrollToTarget, 300);
+      } else {
+        scrollToTarget();
+      }
     } else {
       router.push("/" + href);
     }
