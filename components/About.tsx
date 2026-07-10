@@ -91,7 +91,7 @@ export default function About() {
             </h2>
 
             <p className="text-ink2/75 leading-relaxed mb-5">
-              A DevStudio é operada por um desenvolvedor full stack apaixonado por transformar
+              A Vex Software é operada por um desenvolvedor full stack apaixonado por transformar
               problemas reais em soluções digitais elegantes. Com mais de 4 anos de experiência,
               atendemos desde startups em fase inicial até empresas que precisam modernizar
               sistemas legados.

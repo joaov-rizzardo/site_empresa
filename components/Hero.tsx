@@ -13,7 +13,7 @@ const CODE_LINES = [
   "  delivery: 'on-time',",
   "}",
   "",
-  "const result = await DevStudio",
+  "const result = await VexSoftware",
   "  .transformIdea(startup)",
   "",
   "// ✓ Projeto entregue com sucesso!",
@@ -83,7 +83,7 @@ function TypingTerminal() {
             <span className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
             <span className="w-3 h-3 rounded-full bg-[#28CA41]" />
           </div>
-          <span className="ml-2 text-xs text-dim font-mono">~/devstudio/project.ts</span>
+          <span className="ml-2 text-xs text-dim font-mono">~/vexsoftware/project.ts</span>
         </div>
 
         {/* Code area */}

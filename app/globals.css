@@ -63,6 +63,20 @@ body {
   0%,100% { background-position: 0% 50%; }
   50%     { background-position: 100% 50%; }
 }
+@keyframes vex-glitch-a {
+  0%, 15%, 100% { clip-path: inset(0 0 0 0); transform: translate(0,0); opacity: 0; }
+  1.7%          { clip-path: inset(10% 0 65% 0); transform: translate(-3px, 1px); opacity: .85; }
+  5%            { clip-path: inset(55% 0 20% 0); transform: translate(3px, -1px); opacity: .85; }
+  8.3%          { clip-path: inset(15% 0 70% 0); transform: translate(-2px, 2px); opacity: .7; }
+  11.6%         { clip-path: inset(65% 0 8% 0);  transform: translate(2px, -2px); opacity: .6; }
+}
+@keyframes vex-glitch-b {
+  0%, 15%, 100% { clip-path: inset(0 0 0 0); transform: translate(0,0); opacity: 0; }
+  2.5%          { clip-path: inset(60% 0 15% 0); transform: translate(3px, -1px); opacity: .85; }
+  5.8%          { clip-path: inset(8% 0 72% 0);  transform: translate(-3px, 1px); opacity: .85; }
+  9.2%          { clip-path: inset(68% 0 6% 0);  transform: translate(2px, -2px); opacity: .7; }
+  12.5%         { clip-path: inset(12% 0 60% 0); transform: translate(-2px, 2px); opacity: .6; }
+}
 
 /* ─── Named animation utilities ─── */
 .animate-float       { animation: float 6s ease-in-out infinite; }
@@ -99,6 +113,28 @@ body {
 /* ─── Glow text ─── */
 .glow-primary   { text-shadow: 0 0 30px rgba(108,99,255,.7); }
 .glow-secondary { text-shadow: 0 0 30px rgba(0,212,170,.7); }
+
+/* ─── Vex wordmark glitch ───
+   Every 3s, two duplicate copies split off in the brand purple/teal —
+   a wink at what "vex" means (to confuse, to perplex). */
+.vex-mark { position: relative; display: inline-block; }
+.vex-mark::before,
+.vex-mark::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: none;
+  -webkit-text-fill-color: initial;
+  opacity: 0;
+  pointer-events: none;
+}
+.vex-mark::before { color: #6C63FF; animation: vex-glitch-a 3s ease-in-out infinite; }
+.vex-mark::after  { color: #00D4AA; animation: vex-glitch-b 3s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vex-mark::before,
+  .vex-mark::after { animation: none !important; content: none; }
+}
 
 /* ─── Card hover border glow ─── */
 .card-hover {

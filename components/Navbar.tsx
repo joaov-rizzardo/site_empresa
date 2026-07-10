@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 const links = [
@@ -57,13 +57,16 @@ export default function Navbar() {
         {/* Logo */}
         <button
           onClick={handleLogoClick}
-          className="flex items-center gap-2 group"
+          className="flex items-baseline gap-1.5 group"
         >
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Code2 size={16} className="text-white" />
-          </div>
-          <span className="font-display font-bold text-lg tracking-tight">
-            Dev<span className="text-primary">Studio</span>
+          <span
+            data-text="Vex"
+            className="vex-mark font-display font-extrabold text-2xl tracking-tight gradient-text leading-none"
+          >
+            Vex
+          </span>
+          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-dim/70 group-hover:text-dim transition-colors">
+            software
           </span>
         </button>
 

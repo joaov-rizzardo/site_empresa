@@ -23,7 +23,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DevStudio — Desenvolvimento Web & Mobile Sob Medida",
+  title: "Vex Software — Desenvolvimento Web & Mobile Sob Medida",
   description:
     "Transformamos suas ideias em sistemas que funcionam. Desenvolvimento web e mobile para empresas que querem crescer com tecnologia.",
   keywords: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "software sob medida",
   ],
   openGraph: {
-    title: "DevStudio — Desenvolvimento Web & Mobile Sob Medida",
+    title: "Vex Software — Desenvolvimento Web & Mobile Sob Medida",
     description:
       "Transformamos suas ideias em sistemas que funcionam. Desenvolvimento web e mobile para empresas que querem crescer com tecnologia.",
     type: "website",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DevStudio — Desenvolvimento Web & Mobile Sob Medida",
+    title: "Vex Software — Desenvolvimento Web & Mobile Sob Medida",
     description: "Desenvolvimento web e mobile para empresas que querem crescer com tecnologia.",
   },
   robots: { index: true, follow: true },

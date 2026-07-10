@@ -1,5 +1,4 @@
 "use client";
-import { Code2 } from "lucide-react";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -46,12 +45,15 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <Code2 size={16} className="text-white" />
-              </div>
-              <span className="font-display font-bold text-lg">
-                Dev<span className="text-primary">Studio</span>
+            <div className="flex items-baseline gap-1.5 mb-4 group w-fit">
+              <span
+                data-text="Vex"
+                className="vex-mark font-display font-extrabold text-2xl tracking-tight gradient-text leading-none"
+              >
+                Vex
+              </span>
+              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-dim/70 group-hover:text-dim transition-colors">
+                software
               </span>
             </div>
             <p className="text-dim text-sm leading-relaxed max-w-xs">
@@ -101,8 +103,8 @@ export default function Footer() {
             <h4 className="font-display font-semibold text-sm text-ink mb-5">Contato</h4>
             <ul className="space-y-3 text-sm text-dim">
               <li>
-                <a href="mailto:contato@devstudio.com.br" className="hover:text-ink transition-colors">
-                  contato@devstudio.com.br
+                <a href="mailto:contato@vexsoftware.com.br" className="hover:text-ink transition-colors">
+                  contato@vexsoftware.com.br
                 </a>
               </li>
               <li>
@@ -123,7 +125,7 @@ export default function Footer() {
 
         <div className="border-t border-white/[.05] pt-7 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-dim/60">
-            © {new Date().getFullYear()} DevStudio. Todos os direitos reservados.
+            © {new Date().getFullYear()} Vex Software. Todos os direitos reservados.
           </p>
           <p className="text-xs text-dim/40 font-mono">
             Feito com Next.js + Tailwind CSS

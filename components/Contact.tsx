@@ -73,7 +73,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="mailto:contato@devstudio.com.br"
+                href="mailto:contato@vexsoftware.com.br"
                 className="flex items-center gap-4 p-4 rounded-xl border border-white/[.07] bg-surface hover:border-primary/40 hover:bg-primary/5 transition-all group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -81,7 +81,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-medium text-ink">E-mail</div>
-                  <div className="text-xs text-dim">contato@devstudio.com.br</div>
+                  <div className="text-xs text-dim">contato@vexsoftware.com.br</div>
                 </div>
               </a>
 
@@ -96,7 +96,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-medium text-ink">LinkedIn</div>
-                  <div className="text-xs text-dim">linkedin.com/in/devstudio</div>
+                  <div className="text-xs text-dim">linkedin.com/in/vexsoftware</div>
                 </div>
               </a>
             </div>
