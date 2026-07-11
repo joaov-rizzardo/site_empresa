@@ -9,20 +9,20 @@ const faqs = [
     a: "Depende da complexidade. Uma landing page ou site institucional leva de 2 a 3 semanas. Um MVP de SaaS ou app mobile costuma levar de 2 a 4 meses. Sistemas mais robustos como ERPs e plataformas completas levam de 4 a 8 meses. Tudo é definido com precisão durante o planejamento.",
   },
   {
+    q: "Preciso já ter tudo definido para começar um projeto?",
+    a: "Não. Muitos clientes chegam só com uma ideia. É justamente na etapa de descoberta que ajudamos a transformar essa ideia em um escopo claro e viável.",
+  },
+  {
     q: "Como funciona o processo de orçamento?",
-    a: "É simples e sem compromisso: você descreve o projeto pelo formulário ou WhatsApp, fazemos uma reunião de descoberta (gratuita, ~45 min) para entender os requisitos, e em até 24 horas enviamos uma proposta detalhada com escopo, prazo e investimento.",
+    a: "É simples e sem compromisso: você descreve o projeto pelo formulário ou WhatsApp. Depois, fazemos uma reunião de descoberta gratuita (~45 min) para entender os requisitos. Em até 24 horas, você recebe uma proposta detalhada com escopo, prazo e investimento.",
+  },
+  {
+    q: "O código e o sistema são meus depois da entrega?",
+    a: "Sim. Todo o código-fonte e a propriedade intelectual do projeto são transferidos para você após a entrega. Você não fica refém de nenhuma dependência conosco para manter ou evoluir o sistema.",
   },
   {
     q: "Vocês oferecem suporte após a entrega?",
-    a: "Sim. Todo projeto inclui 30 dias de suporte gratuito pós-entrega para correção de eventuais bugs. Para continuidade, oferecemos planos mensais de manutenção, evolução do sistema e suporte técnico dedicado.",
-  },
-  {
-    q: "Quais formas de pagamento aceitam?",
-    a: "Trabalhamos com parcelamento por milestone: uma entrada no início do projeto, pagamentos intermediários nas entregas e o saldo final na entrega completa. Aceitamos PIX, transferência bancária e cartão de crédito em projetos acima de determinado valor.",
-  },
-  {
-    q: "É possível começar com um MVP e expandir depois?",
-    a: "Absolutamente — é nossa abordagem favorita. Construímos o MVP com a arquitetura certa para crescer, evitando reescritas futuras. Depois do lançamento e validação, evoluímos o produto em ciclos iterativos com base em dados e feedback real dos usuários.",
+    a: "Sim. Após a entrega, você tem 30 dias de suporte gratuito para correções e pequenos ajustes. Caso surjam demandas maiores, como novas funcionalidades, elas são orçadas separadamente.",
   },
 ];
 
