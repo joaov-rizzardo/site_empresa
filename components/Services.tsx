@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Monitor, Smartphone, Layout, Wrench, Lightbulb } from "lucide-react";
+import { Monitor, Smartphone, Layout, Wrench, Lightbulb, Plug } from "lucide-react";
 
 const services = [
   {
@@ -14,14 +14,14 @@ const services = [
     icon: Smartphone,
     title: "Aplicativos Mobile",
     description:
-      "Apps nativos e multiplataforma para iOS e Android — do protótipo ao lançamento nas lojas, com design nativo e performance real.",
+      "Criamos aplicativos nativos e multiplataforma para iOS e Android, prontos para o mercado.",
     accent: "#00D4AA",
   },
   {
     icon: Layout,
     title: "Landing Pages e Sites",
     description:
-      "Sites institucionais e landing pages de alta conversão, otimizadas para SEO, Core Web Vitals e performance máxima.",
+      "Sites institucionais e landing pages que carregam rápido, aparecem no Google e transformam visitas em resultado.",
     accent: "#6C63FF",
   },
   {
@@ -37,6 +37,13 @@ const services = [
     description:
       "Diagnóstico de arquitetura, escolha de stack e planejamento técnico para tirar seu projeto do papel com as decisões certas.",
     accent: "#6C63FF",
+  },
+  {
+    icon: Plug,
+    title: "APIs e Integrações",
+    description:
+      "Conectamos seus sistemas a ERPs, CRMs, gateways de pagamento e outras plataformas, automatizando processos e eliminando retrabalho.",
+    accent: "#00D4AA",
   },
 ];
 
