@@ -7,17 +7,17 @@ const techs = [
   { name: "TypeScript", color: "#3178C6" },
   { name: "Node.js", color: "#68A063" },
   { name: "React Native", color: "#61DAFB" },
-  { name: "Flutter", color: "#54C5F8" },
   { name: "PostgreSQL", color: "#336791" },
   { name: "MongoDB", color: "#47A248" },
   { name: "Firebase", color: "#FFA000" },
   { name: "Docker", color: "#2496ED" },
   { name: "AWS", color: "#FF9900" },
-  { name: "Prisma", color: "#5A67D8" },
-  { name: "GraphQL", color: "#E535AB" },
   { name: "Redis", color: "#DC382D" },
   { name: "Git", color: "#F05032" },
   { name: "Tailwind", color: "#06B6D4" },
+  { name: ".NET", color: "#512BD4" },
+  { name: "PHP", color: "#777BB4" },
+  { name: "Angular", color: "#DD0031" },
 ];
 
 const doubled = [...techs, ...techs];
