@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Monitor, Smartphone, Plug, Layout } from "lucide-react";
+import { Monitor, Smartphone, Layout, Wrench, Lightbulb } from "lucide-react";
 
 const services = [
   {
@@ -8,7 +8,6 @@ const services = [
     title: "Sistemas Web",
     description:
       "Plataformas, dashboards, ERPs, CRMs e aplicações web completas com foco em performance, escalabilidade e experiência de usuário.",
-    tags: ["React", "Next.js", "Node.js"],
     accent: "#6C63FF",
   },
   {
@@ -16,24 +15,28 @@ const services = [
     title: "Aplicativos Mobile",
     description:
       "Apps nativos e multiplataforma para iOS e Android — do protótipo ao lançamento nas lojas, com design nativo e performance real.",
-    tags: ["React Native", "Flutter"],
     accent: "#00D4AA",
-  },
-  {
-    icon: Plug,
-    title: "APIs & Integrações",
-    description:
-      "APIs RESTful e GraphQL robustas, conectando sistemas, ERPs, gateways de pagamento e serviços externos com segurança e velocidade.",
-    tags: ["Node.js", "PostgreSQL", "REST"],
-    accent: "#6C63FF",
   },
   {
     icon: Layout,
-    title: "Landing Pages & Sites",
+    title: "Landing Pages e Sites",
     description:
       "Sites institucionais e landing pages de alta conversão, otimizadas para SEO, Core Web Vitals e performance máxima.",
-    tags: ["Next.js", "Tailwind", "SEO"],
+    accent: "#6C63FF",
+  },
+  {
+    icon: Wrench,
+    title: "Manutenção e Evolução",
+    description:
+      "Correção de bugs, refatoração e novas funcionalidades em sistemas já existentes, sem travar a operação do seu negócio.",
     accent: "#00D4AA",
+  },
+  {
+    icon: Lightbulb,
+    title: "Consultoria Técnica",
+    description:
+      "Diagnóstico de arquitetura, escolha de stack e planejamento técnico para tirar seu projeto do papel com as decisões certas.",
+    accent: "#6C63FF",
   },
 ];
 
@@ -62,11 +65,11 @@ export default function Services() {
           className="text-center mb-16"
         >
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
-            // O que entregamos
+            // Serviços
           </span>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
-            Soluções feitas para{" "}
-            <span className="gradient-text">escalar</span>
+            O que podemos{" "}
+            <span className="gradient-text">construir juntos</span>
           </h2>
         </motion.div>
 
@@ -76,7 +79,7 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {services.map((s) => {
             const Icon = s.icon;
@@ -101,23 +104,7 @@ export default function Services() {
                 </div>
 
                 <h3 className="font-display font-bold text-lg text-ink mb-3">{s.title}</h3>
-                <p className="text-dim text-sm leading-relaxed mb-5">{s.description}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {s.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2.5 py-1 rounded-md text-xs font-mono"
-                      style={{
-                        background: `${s.accent}14`,
-                        color: s.accent,
-                      }}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-dim text-sm leading-relaxed">{s.description}</p>
 
                 {/* Hover top border accent */}
                 <div
