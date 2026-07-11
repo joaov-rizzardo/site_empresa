@@ -226,9 +226,9 @@ export default function Hero() {
               transition={{ delay: 0.35 }}
               className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight mb-6 break-words"
             >
-              Transformamos{" "}
-              <span className="gradient-text">suas ideias</span>{" "}
-              em sistemas que funcionam
+              Construímos{" "}
+              <span className="gradient-text">o sistema</span>{" "}
+              que seu negócio precisa
             </motion.h1>
 
             {/* Subtitle */}
@@ -238,8 +238,8 @@ export default function Hero() {
               transition={{ delay: 0.5 }}
               className="text-ink2/80 text-lg leading-relaxed mb-10 max-w-lg"
             >
-              Desenvolvimento web e mobile sob medida para empresas que querem
-              crescer com tecnologia de verdade — desde o MVP até o escalonamento.
+              Criamos sistemas web e mobile personalizados para empreendedores,
+              startups e empresas que precisam de tecnologia que realmente resolve.
             </motion.p>
 
             {/* CTAs */}
