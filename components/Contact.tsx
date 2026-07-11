@@ -3,14 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, MessageCircle, Mail, CheckCircle2, Loader2 } from "lucide-react";
 
-function LinkedinIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
-
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
@@ -51,9 +43,8 @@ export default function Contact() {
               <span className="gradient-text">sua ideia</span>?
             </h2>
             <p className="text-ink2/75 leading-relaxed mb-10">
-              Entre em contato e receba um orçamento detalhado sem compromisso em até{" "}
-              <span className="text-secondary font-medium">24 horas</span>. A primeira conversa
-              é gratuita e já traz clareza sobre o que o seu projeto precisa.
+              Entre em contato e receba uma resposta rápida, sem compromisso. A primeira
+              conversa é gratuita e já traz clareza sobre o que o seu projeto precisa.
             </p>
 
             <div className="space-y-4">
@@ -84,21 +75,6 @@ export default function Contact() {
                   <div className="text-xs text-dim">contato@vexsoftware.com.br</div>
                 </div>
               </a>
-
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl border border-white/[.07] bg-surface hover:border-[#0A66C2]/40 hover:bg-[#0A66C2]/5 transition-all group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-[#0A66C2]/10 flex items-center justify-center group-hover:bg-[#0A66C2]/20 transition-colors">
-                  <LinkedinIcon size={18} />
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-ink">LinkedIn</div>
-                  <div className="text-xs text-dim">linkedin.com/in/vexsoftware</div>
-                </div>
-              </a>
             </div>
           </motion.div>
 
@@ -121,7 +97,7 @@ export default function Contact() {
                     Mensagem enviada!
                   </h3>
                   <p className="text-dim text-sm">
-                    Retornarei em até 24 horas com uma proposta personalizada.
+                    Retornarei em breve com uma resposta personalizada.
                   </p>
                 </motion.div>
               ) : (
@@ -215,7 +191,7 @@ export default function Contact() {
                   </button>
 
                   <p className="text-center text-xs text-dim/60">
-                    Sem spam. Retorno garantido em até 24h.
+                    Sem spam. Resposta garantida.
                   </p>
                 </form>
               )}

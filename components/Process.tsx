@@ -8,28 +8,28 @@ const steps = [
     icon: Search,
     title: "Descoberta",
     description:
-      "Mergulhamos no seu negócio, entendemos objetivos, dores e contexto para construir a solução certa — não apenas a mais rápida.",
+      "Ouvimos sua ideia e suas expectativas, entendemos objetivos e contexto, para construir a solução certa para o seu negócio.",
   },
   {
     number: "02",
     icon: Map,
     title: "Planejamento",
     description:
-      "Definimos escopo, arquitetura, tecnologias e cronograma. Sem surpresas no meio do caminho.",
+      "Planejamos cada etapa: escopo, arquitetura, tecnologias e prazos, para que você saiba exatamente o que esperar.",
   },
   {
     number: "03",
     icon: Code2,
     title: "Desenvolvimento",
     description:
-      "Entregas iterativas com atualizações semanais. Você acompanha cada etapa do projeto em tempo real.",
+      "Entregas iterativas com atualizações periódicas. Você acompanha cada etapa do projeto em tempo real.",
   },
   {
     number: "04",
     icon: Rocket,
     title: "Lançamento",
     description:
-      "Deploy, testes de qualidade, documentação e suporte pós-entrega para garantir uma estreia impecável.",
+      "Deploy, testes de qualidade e documentação completa, com suporte pós-entrega para garantir confiança desde o primeiro acesso.",
   },
 ];
 

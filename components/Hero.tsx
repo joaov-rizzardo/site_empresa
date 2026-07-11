@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, Star, Zap } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 /* ─── Typing terminal ─── */
 const CODE_LINES = [
@@ -219,17 +219,6 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left */}
           <div>
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 mb-7 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-sm text-primary font-medium"
-            >
-              <Star size={13} fill="currentColor" />
-              <span>+20 projetos entregues · Desde 2020</span>
-            </motion.div>
-
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
@@ -237,9 +226,9 @@ export default function Hero() {
               transition={{ delay: 0.35 }}
               className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight mb-6 break-words"
             >
-              Transformamos{" "}
-              <span className="gradient-text">suas ideias</span>{" "}
-              em sistemas que funcionam
+              Construímos{" "}
+              <span className="gradient-text">o sistema</span>{" "}
+              que seu negócio precisa
             </motion.h1>
 
             {/* Subtitle */}
@@ -249,8 +238,8 @@ export default function Hero() {
               transition={{ delay: 0.5 }}
               className="text-ink2/80 text-lg leading-relaxed mb-10 max-w-lg"
             >
-              Desenvolvimento web e mobile sob medida para empresas que querem
-              crescer com tecnologia de verdade — desde o MVP até o escalonamento.
+              Criamos sistemas web e mobile personalizados para empreendedores,
+              startups e empresas que precisam de tecnologia que realmente resolve.
             </motion.p>
 
             {/* CTAs */}
@@ -260,44 +249,18 @@ export default function Hero() {
               transition={{ delay: 0.62 }}
               className="flex flex-wrap gap-4"
             >
-              <button
-                onClick={() => document.querySelector("#servicos")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-white font-semibold
-                  hover:bg-primary/90 transition-all duration-200 hover:shadow-[0_0_30px_rgba(108,99,255,0.45)] group"
-              >
-                Ver Projetos
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
               <a
                 href="https://wa.me/5521XXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-white/12 bg-white/[.04]
-                  text-ink/80 font-semibold hover:border-secondary/50 hover:text-secondary hover:bg-secondary/5 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-white font-semibold
+                  hover:bg-primary/90 transition-all duration-200 hover:shadow-[0_0_30px_rgba(108,99,255,0.45)]"
               >
                 <MessageCircle size={16} />
                 Falar Conosco
               </a>
             </motion.div>
 
-            {/* Trust indicators */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-white/[.06]"
-            >
-              {[
-                { value: "+20", label: "Projetos entregues" },
-                { value: "+15", label: "Clientes satisfeitos" },
-                { value: "4+", label: "Anos de experiência" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="font-display font-bold text-2xl text-primary">{s.value}</div>
-                  <div className="text-xs text-dim mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           {/* Right — Terminal */}
@@ -308,18 +271,6 @@ export default function Hero() {
             className="animate-float"
           >
             <TypingTerminal />
-
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
-              className="absolute -bottom-4 left-6 flex items-center gap-2 px-4 py-2 rounded-xl glass text-sm shadow-xl"
-            >
-              <Zap size={14} className="text-secondary" fill="currentColor" />
-              <span className="text-ink2 text-xs">Deploy em produção</span>
-              <span className="text-secondary font-mono text-xs">✓</span>
-            </motion.div>
           </motion.div>
         </div>
       </div>
