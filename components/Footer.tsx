@@ -1,4 +1,5 @@
 "use client";
+import { siteConfig, whatsappUrl } from "@/lib/site";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },
@@ -57,22 +58,23 @@ export default function Footer() {
             <h4 className="font-display font-semibold text-sm text-ink mb-5">Contato</h4>
             <ul className="space-y-3 text-sm text-dim">
               <li>
-                <a href="mailto:contato@vexsoftware.com.br" className="hover:text-ink transition-colors">
-                  contato@vexsoftware.com.br
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-ink transition-colors">
+                  {siteConfig.email}
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/5521XXXXXXXXX"
+                  href={whatsappUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-ink transition-colors"
                 >
-                  (21) XXXXX-XXXX
+                  {siteConfig.phoneDisplay}
                 </a>
               </li>
-              <li className="text-dim/50 text-xs mt-4">Rio de Janeiro, RJ — Brasil</li>
-              <li className="text-dim/50 text-xs">CNPJ: XX.XXX.XXX/0001-XX</li>
+              <li className="text-dim/50 text-xs mt-4">
+                {siteConfig.city}, {siteConfig.region} — Brasil
+              </li>
             </ul>
           </div>
         </div>

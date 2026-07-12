@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { whatsappUrl, whatsappMessage } from "@/lib/site";
 
 /* ─── Typing terminal ─── */
 const CODE_LINES = [
@@ -136,57 +137,80 @@ function ParticleCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animId: number;
+    // Respeita quem prefere menos movimento: não anima nada.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let animId = 0;
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let started = false;
+
     const resize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
-    resize();
     window.addEventListener("resize", resize);
 
-    type P = { x: number; y: number; vx: number; vy: number; r: number };
-    const COUNT = 60;
-    const particles: P[] = Array.from({ length: COUNT }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.5 + 0.5,
-    }));
+    const start = () => {
+      if (started) return;
+      started = true;
+      resize();
 
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const p of particles) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(108,99,255,0.5)";
-        ctx.fill();
-      }
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(108,99,255,${0.15 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+      type P = { x: number; y: number; vx: number; vy: number; r: number };
+      const COUNT = 60;
+      const particles: P[] = Array.from({ length: COUNT }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 1.5 + 0.5,
+      }));
+
+      const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(108,99,255,0.5)";
+          ctx.fill();
+        }
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(108,99,255,${0.15 * (1 - dist / 110)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
           }
         }
-      }
-      animId = requestAnimationFrame(draw);
+        animId = requestAnimationFrame(draw);
+      };
+      draw();
     };
-    draw();
+
+    // Adia o start para não competir com a main-thread durante o carregamento.
+    if (typeof window.requestIdleCallback === "function") {
+      idleId = window.requestIdleCallback(start, { timeout: 2000 });
+    } else {
+      timeoutId = setTimeout(start, 1000);
+    }
 
     return () => {
-      cancelAnimationFrame(animId);
+      if (animId) cancelAnimationFrame(animId);
+      if (idleId !== undefined && typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
       window.removeEventListener("resize", resize);
     };
   }, []);
@@ -204,6 +228,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
+      aria-labelledby="inicio-heading"
       className="relative min-h-screen flex items-center overflow-hidden pt-16"
     >
       {/* Background layers */}
@@ -219,11 +244,13 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left */}
           <div className="min-w-0">
-            {/* Headline */}
+            {/* Headline — sem opacity:0 no início para não atrasar o LCP
+                (o maior elemento de texto é pintado já no SSR). */}
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
+              id="inicio-heading"
+              initial={{ y: 24 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5 }}
               className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight mb-6 text-balance hyphens-none"
             >
               Transformamos a sua ideia em um{" "}
@@ -232,9 +259,9 @@ export default function Hero() {
 
             {/* Subtitle */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
               className="text-ink2/80 text-lg leading-relaxed mb-10 max-w-lg"
             >
               Criamos sistemas web e mobile personalizados para empreendedores,
@@ -249,7 +276,7 @@ export default function Hero() {
               className="flex flex-wrap gap-4"
             >
               <a
-                href="https://wa.me/5521XXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento"
+                href={whatsappUrl(whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-white font-semibold

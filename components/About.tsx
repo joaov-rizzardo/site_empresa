@@ -63,7 +63,7 @@ const cardVariants = {
 
 export default function About() {
   return (
-    <section id="sobre" className="py-28 relative overflow-hidden">
+    <section id="sobre" aria-labelledby="sobre-heading" className="py-28 relative overflow-hidden">
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
 
@@ -79,7 +79,7 @@ export default function About() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Sobre nós
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 break-words">
+          <h2 id="sobre-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 break-words">
             Sobre a <span className="gradient-text">Vex Software</span>
           </h2>
           <p className="text-ink2/75 leading-relaxed">

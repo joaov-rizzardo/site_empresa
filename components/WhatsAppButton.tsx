@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { whatsappUrl, whatsappMessage } from "@/lib/site";
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
@@ -23,7 +24,7 @@ export default function WhatsAppButton() {
       </AnimatePresence>
 
       <a
-        href="https://wa.me/5521XXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento"
+        href={whatsappUrl(whatsappMessage)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contato via WhatsApp"
