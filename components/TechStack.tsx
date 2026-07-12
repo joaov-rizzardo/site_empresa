@@ -24,7 +24,7 @@ const doubled = [...techs, ...techs];
 
 export default function TechStack() {
   return (
-    <section className="py-24 relative overflow-hidden bg-surface/30">
+    <section id="tecnologias" aria-labelledby="tecnologias-heading" className="py-24 relative overflow-hidden bg-surface/30">
       <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-base to-transparent pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-base to-transparent pointer-events-none" />
 
@@ -38,7 +38,7 @@ export default function TechStack() {
         <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
           // Nossa stack
         </span>
-        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
+        <h2 id="tecnologias-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
           Tecnologias que{" "}
           <span className="gradient-text">dominamos</span>
         </h2>

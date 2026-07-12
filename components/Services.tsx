@@ -58,7 +58,7 @@ const cardVariants = {
 
 export default function Services() {
   return (
-    <section id="servicos" className="py-28 relative overflow-hidden">
+    <section id="servicos" aria-labelledby="servicos-heading" className="py-28 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-64 bg-primary/5 rounded-full blur-3xl" />
 
@@ -74,7 +74,7 @@ export default function Services() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Serviços
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
+          <h2 id="servicos-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
             O que podemos{" "}
             <span className="gradient-text">construir juntos</span>
           </h2>

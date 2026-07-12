@@ -44,7 +44,8 @@ export const metadata: Metadata = {
     description,
     images: ["/images/ancora/hero-desktop.png"],
   },
-  robots: { index: true, follow: true },
+  // Portfólio fora do ar por ora — não indexar.
+  robots: { index: false, follow: false },
 };
 
 /* JSON-LD — helps search engines understand this as a project/case study */

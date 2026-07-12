@@ -182,6 +182,8 @@ export default function Testimonials() {
 
   return (
     <section
+      id="depoimentos"
+      aria-labelledby="depoimentos-heading"
       className="py-28 bg-surface/30 relative overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -200,7 +202,7 @@ export default function Testimonials() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Depoimentos
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
+          <h2 id="depoimentos-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
             O que nossos{" "}
             <span className="gradient-text">clientes dizem</span>
           </h2>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, MessageCircle, Mail, CheckCircle2, Loader2 } from "lucide-react";
+import { siteConfig, whatsappUrl, whatsappMessage } from "@/lib/site";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -20,7 +21,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contato" className="py-28 relative overflow-hidden">
+    <section id="contato" aria-labelledby="contato-heading" className="py-28 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/40 to-surface/60" />
       <div className="absolute inset-0 dot-grid opacity-25" />
@@ -38,9 +39,9 @@ export default function Contact() {
             <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-5">
               // Contato
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5 break-words">
+            <h2 id="contato-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5 break-words">
               Pronto para transformar{" "}
-              <span className="gradient-text">sua ideia</span>?
+              <span className="gradient-text">sua ideia</span> em realidade?
             </h2>
             <p className="text-ink2/75 leading-relaxed mb-10">
               Entre em contato e receba uma resposta rápida, sem compromisso. A primeira
@@ -49,7 +50,7 @@ export default function Contact() {
 
             <div className="space-y-4">
               <a
-                href="https://wa.me/5521XXXXXXXXX?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento"
+                href={whatsappUrl(whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-xl border border-white/[.07] bg-surface hover:border-[#25D366]/40 hover:bg-[#25D366]/5 transition-all group"
@@ -64,7 +65,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="mailto:contato@vexsoftware.com.br"
+                href={`mailto:${siteConfig.email}`}
                 className="flex items-center gap-4 p-4 rounded-xl border border-white/[.07] bg-surface hover:border-primary/40 hover:bg-primary/5 transition-all group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -72,7 +73,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-medium text-ink">E-mail</div>
-                  <div className="text-xs text-dim">contato@vexsoftware.com.br</div>
+                  <div className="text-xs text-dim">{siteConfig.email}</div>
                 </div>
               </a>
             </div>

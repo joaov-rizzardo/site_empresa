@@ -156,7 +156,7 @@ export default function Portfolio() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="portfolio" className="py-28 relative">
+    <section id="portfolio" aria-labelledby="portfolio-heading" className="py-28 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Header */}
@@ -170,7 +170,7 @@ export default function Portfolio() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Portfólio
           </span>
-          <h2 className="font-display text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h2 id="portfolio-heading" className="font-display text-4xl lg:text-5xl font-extrabold tracking-tight">
             Projetos em{" "}
             <span className="gradient-text">destaque</span>
           </h2>

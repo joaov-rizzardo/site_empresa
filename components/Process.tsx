@@ -35,7 +35,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="py-28 bg-surface/40 relative overflow-hidden">
+    <section id="processo" aria-labelledby="processo-heading" className="py-28 bg-surface/40 relative overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-25" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
@@ -49,7 +49,7 @@ export default function Process() {
           <span className="inline-block text-xs font-mono text-secondary tracking-[0.2em] uppercase mb-4">
             // Como trabalhamos
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
+          <h2 id="processo-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words">
             Um processo{" "}
             <span className="gradient-text">transparente</span>
           </h2>
