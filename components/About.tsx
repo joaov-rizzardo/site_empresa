@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Rocket, Users, CalendarClock, Target } from "lucide-react";
 
 const stats = [
-  { value: 20, suffix: "+", label: "Projetos entregues", icon: Rocket, accent: "#6C63FF" },
-  { value: 15, suffix: "+", label: "Clientes ativos", icon: Users, accent: "#00D4AA" },
+  { value: 38, suffix: "+", label: "Projetos entregues", icon: Rocket, accent: "#6C63FF" },
+  { value: 17, suffix: "+", label: "Clientes ativos", icon: Users, accent: "#00D4AA" },
   { value: 4, suffix: "+", label: "Anos de mercado", icon: CalendarClock, accent: "#6C63FF" },
   { value: 100, suffix: "%", label: "Entregas no prazo", icon: Target, accent: "#00D4AA" },
 ];
@@ -84,7 +84,7 @@ export default function About() {
           </h2>
           <p className="text-ink2/75 leading-relaxed">
             A Vex Software desenvolve sistemas web, aplicativos e integrações sob medida para
-            empresas que precisam de tecnologia confiável. Acompanhamos cada projeto do
+            empresas e pessoas que precisam de tecnologia confiável. Acompanhamos cada projeto do
             planejamento à entrega, com código de qualidade, prazos respeitados e comunicação
             direta, sem intermediários.
           </p>
@@ -126,7 +126,7 @@ export default function About() {
                 </div>
 
                 {/* Number */}
-                <div className="relative font-display font-extrabold text-4xl sm:text-5xl tracking-tight text-ink">
+                <div className="relative font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ink">
                   <Counter target={s.value} suffix={s.suffix} />
                 </div>
                 <div className="relative text-dim text-xs sm:text-sm mt-2">{s.label}</div>

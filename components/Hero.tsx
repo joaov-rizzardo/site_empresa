@@ -218,17 +218,16 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left */}
-          <div>
+          <div className="min-w-0">
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
-              className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight mb-6 break-words"
+              className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight mb-6 text-balance hyphens-none"
             >
-              Construímos{" "}
-              <span className="gradient-text">o sistema</span>{" "}
-              que seu negócio precisa
+              Transformamos a sua ideia em um{" "}
+              <span className="gradient-text">sistema que funciona</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -257,7 +256,7 @@ export default function Hero() {
                   hover:bg-primary/90 transition-all duration-200 hover:shadow-[0_0_30px_rgba(108,99,255,0.45)]"
               >
                 <MessageCircle size={16} />
-                Falar Conosco
+                Fale conosco
               </a>
             </motion.div>
 
