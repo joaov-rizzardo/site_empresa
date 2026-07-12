@@ -84,7 +84,7 @@ export default function About() {
           </h2>
           <p className="text-ink2/75 leading-relaxed">
             A Vex Software desenvolve sistemas web, aplicativos e integrações sob medida para
-            empresas que precisam de tecnologia confiável. Acompanhamos cada projeto do
+            empresas e pessoas que precisam de tecnologia confiável. Acompanhamos cada projeto do
             planejamento à entrega, com código de qualidade, prazos respeitados e comunicação
             direta, sem intermediários.
           </p>
