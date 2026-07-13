@@ -172,7 +172,7 @@ Adicionar um `<script type="application/ld+json">` (via componente server que in
 - [x] 3.2 Otimizar `ParticleCanvas` (idle + reduced-motion)
 - [x] 3.3 `prefers-reduced-motion` global (CSS + `<MotionConfig reducedMotion="user">`)
 - [x] 3.4 OG image 1200×630 via `app/opengraph-image.tsx` (gerada por código, sem binário)
-- [ ] 4.1 Número de WhatsApp/telefone reais — **centralizado em `lib/site.ts`, aguardando o número real** (hoje ainda placeholder)
+- [x] 4.1 Número de WhatsApp/telefone reais — `lib/site.ts` atualizado com `+5512997096351` (WhatsApp, Footer e JSON-LD já refletem)
 - [x] 4.2 `apple-icon` (`app/apple-icon.tsx`) + `theme-color` (viewport)
 - [x] 4.3 `id` nos `<h2>` + `aria-labelledby` nas 9 seções
 - [x] 4.4 `app/manifest.ts`

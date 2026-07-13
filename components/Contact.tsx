@@ -6,14 +6,30 @@ import { siteConfig, whatsappUrl, whatsappMessage } from "@/lib/site";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // Simulated form submission — replace with Formspree/EmailJS endpoint
-    await new Promise((r) => setTimeout(r, 1400));
-    setStatus("sent");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          subject: `Novo contato pelo site — ${form.name}`,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      setStatus(data.success ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -191,9 +207,15 @@ export default function Contact() {
                     )}
                   </button>
 
-                  <p className="text-center text-xs text-dim/60">
-                    Sem spam. Resposta garantida.
-                  </p>
+                  {status === "error" ? (
+                    <p className="text-center text-xs text-red-400">
+                      Não foi possível enviar. Tente novamente ou fale pelo WhatsApp.
+                    </p>
+                  ) : (
+                    <p className="text-center text-xs text-dim/60">
+                      Sem spam. Resposta garantida.
+                    </p>
+                  )}
                 </form>
               )}
             </div>

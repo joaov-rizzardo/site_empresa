@@ -7,12 +7,11 @@ export const siteConfig = {
   name: "Vex Software",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vexsoftware.com.br",
   email: "contato@vexsoftware.com.br",
-  // TODO: substituir pelos dados reais (formato internacional, só dígitos).
-  whatsapp: "5521XXXXXXXXX",
-  phoneDisplay: "(21) XXXXX-XXXX",
-  phoneE164: "+5521XXXXXXXXX",
-  city: "Rio de Janeiro",
-  region: "RJ",
+  whatsapp: "5512997096351",
+  phoneDisplay: "(12) 99709-6351",
+  phoneE164: "+5512997096351",
+  city: "São Paulo",
+  region: "SP",
   country: "BR",
 } as const;
 
